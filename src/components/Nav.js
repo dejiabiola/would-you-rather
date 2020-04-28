@@ -2,12 +2,16 @@ import React, { Component, Fragment } from 'react'
 import { Menu, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logOutUser } from '../actions/authedUser'
 
 class Navbar extends Component {
   state = { activeItem: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  handleSignOut = (e) => {
+    this.props.dispatch(logOutUser())
+  }
 
   render() {
     const { user } = this.props
@@ -50,8 +54,6 @@ class Navbar extends Component {
               {user.name}
             </span>
             <Menu.Item
-              as={Link}
-              to='logout'
               name='logout'
               onClick={this.handleSignOut}
             />

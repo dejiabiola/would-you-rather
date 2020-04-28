@@ -13,6 +13,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.leaderboard-card:last-of-type {
+  margin-bottom: 10px;
 }
 
 .leaderboard-image-div {

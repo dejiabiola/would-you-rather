@@ -10,7 +10,7 @@
   border-bottom: 1px solid black;
 }
 
-.dashboard-button {
+.dashboard-button-div button {
   border: none;
   width: 50%;
   padding: 20px;
@@ -29,6 +29,7 @@
   border-left: 1px solid black
 }
 
-.active-button {
+#active-button {
   border-bottom: none;
+  font-size: 1.2rem;
 }
