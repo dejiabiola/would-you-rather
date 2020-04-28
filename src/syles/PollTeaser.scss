@@ -1,0 +1,53 @@
+.teaser-body {
+  border: 1px solid blue
+}
+
+.teaser-header-div {
+  background-color: rgb(155, 151, 151);
+  padding: 10px;
+}
+
+.teaser-header {
+  
+}
+
+.teaser-inner-div {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px
+}
+
+.teaser-image {
+  height: 150px;
+  width: 150px;
+}
+
+.teaser-info-div {
+  border-left: 1px solid grey;
+  margin-left: 20px;
+  padding-left: 20px;
+  width: 200px;
+}
+
+.teaser-info-header {
+  font-size: 1.2rem;
+}
+
+.teaser-info {
+  margin-top: 27px;
+}
+
+.teaser-button {
+  width: 250px;
+  background-color: #20BA45;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+}
+
+.teaser-button:hover {
+
+}

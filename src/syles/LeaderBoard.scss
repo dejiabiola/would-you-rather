@@ -1,0 +1,82 @@
+.leaderboard-outer-body {
+  border: 1px solid blue;
+  padding: 10px;
+}
+
+.leaderboard-outer-body h1 {
+  text-align: center;
+}
+
+.leaderboard-card {
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.leaderboard-image-div {
+  border-right: 1px solid black;
+  padding-right: 20px;
+}
+
+.leaderboard-image-div img {
+  width: 100px;
+  height: 100px;
+}
+
+.leaderboard-info {
+  width: 200px;
+  border-right: 1px solid black
+}
+
+.lb-answered-questions-div {
+  margin-bottom: 13px;
+}
+
+table {
+  width: 90%;
+}
+
+table tr {
+  height: 30px;
+}
+
+td {
+  font-size: 1.2rem;
+}
+
+
+
+.score-rank {
+  width: 100px;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  justify-content: space-evenly;
+}
+
+.score span:nth-of-type(1) {
+  font-size: 1.3rem;
+}
+
+.rank span:nth-of-type(1) {
+  font-size: 1.3rem;
+}
+
+.rank {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+}
+
+.rounded {
+  color: white;
+  padding: 11px 15px;
+  background-color: #20BA45;
+  border-radius: 50%;
+}

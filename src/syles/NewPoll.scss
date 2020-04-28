@@ -1,0 +1,45 @@
+.new-poll-body {
+  border: 1px solid blue;
+}
+
+.new-poll-header-div {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+}
+
+.new-poll-info {
+  padding: 10px;
+}
+
+.new-poll-info h4 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.new-poll-info p:nth-of-type(1) {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.new-poll-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid grey;
+  margin-bottom: 30px;
+}
+
+.new-poll-info p:nth-of-type(2) {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.new-poll-submit {
+  width: 100%;
+  background-color: #20BA45;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+}
