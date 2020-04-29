@@ -31,7 +31,7 @@ class App extends Component {
             <Route path='/add' component={NewPoll} />
             <Route path="/leaderboard" component={LeaderBoard} />
             <Route path='/questions/:question_id' component={PollQuestion} />
-            <Route path='/result' component={ResultPage} />
+            <Route path='/results/:question_id' component={ResultPage} />
           </div>
         </Fragment>
       </Router>

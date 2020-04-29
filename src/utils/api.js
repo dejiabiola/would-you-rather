@@ -15,7 +15,7 @@ export function getInitialData() {
   }))
 }
 
-export function saveQuestions(question) {
+export function saveQuestion(question) {
   return _saveQuestion(question)
 }
 

@@ -11,7 +11,7 @@ class LeaderBoard extends Component {
       <div className="leaderboard-outer-body">
         <h1>LeaderBoard</h1>
         {leaderboardInfo.map((user, i) => (
-          <div className="leaderboard-card">
+          <div className="leaderboard-card" key={user.id}>
             <div className="leaderboard-image-div">
               <img src={user.avatar} alt={user.name}/>
             </div>

@@ -19,12 +19,14 @@ class PollTeaser extends Component {
             </div>
             <div className="teaser-inner-div">
               <div className="teaser-image-div">
-                <img src="https://res.cloudinary.com/dejiabiola/image/upload/v1588060313/girl-1.svg" alt="edo" className="teaser-image"/>
+                <img src={users[question.author].avatarURL} alt={`${users[question.author].name} avatar`} className="teaser-image"/>
               </div>
               <div className="teaser-info-div">
                 <h3 className="teaser-info-header">Would you rather</h3>
                 <p className="teaser-info">{question.optionOne.text}...</p>
-                <Link to='/questions/123'><button className="teaser-button">View Poll</button></Link>
+                {question.hasLiked ?
+                  <Link to={`/results/${question.id}`}><button className="teaser-button" style={{backgroundColor:'blue'}}>Results</button></Link> :
+                <Link to={`/questions/${question.id}`}><button className="teaser-button">View Poll</button></Link>}
               </div>
             </div>
           </div>
@@ -38,7 +40,12 @@ function mapStateToProps({ users, authedUser, questions}) {
   const answeredIds = Object.keys(users[authedUser].answers);
   const answeredQuestions = Object.values(questions).filter(question => (
     answeredIds.includes(question.id)
-  )).sort((a, b) => b.timestamp - a.timestamp)
+  )).sort((a, b) => b.timestamp - a.timestamp).map(question => {
+    return {
+      ...question,
+      hasLiked: true
+    }
+  })
   const unansweredQuestions = Object.values(questions).filter(question => (
     !answeredIds.includes(question.id)
   )).sort((a, b) => b.timestamp - a.timestamp)
