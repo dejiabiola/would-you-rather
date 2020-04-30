@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-
-
+import { getAllUsers } from '../actions/users';
+import { Dropdown, Button } from 'semantic-ui-react';
 
 class Login extends Component {
-  
+  componentDidMount() {
+    this.props.dispatch(getAllUsers())
+  }
   state = {
     user: ''
   }
 
-  handleSetUser = (event) => {
-    const value = event.target.value
+  handleSetUser = (event, { value }) => {
     this.setState({
       user: value
     })
@@ -23,21 +24,25 @@ class Login extends Component {
   }
 
   render() {
-    const { users } = this.props;
+    const { userOptions } = this.props;
     return (
       
-        <form onSubmit={this.handleSignIn}>
+        <form onSubmit={this.handleSignIn} className="login-form-div">
           <div>
-            <h2>Welcome to the Would You Rather Game</h2>
-            <p>Please select a user to continue:</p>
-            <select name="" id="" onChange={this.handleSetUser}>
-              <option value="" disabled selected>Select User</option>
-              {users.map(user => (
-                <option value={user.id} key={user.id}>{user.name}</option>
-              ))}
-            </select>
-            <div>
-              <button>Sign In</button>
+            <h2 style={{textAlign: 'center'}}>Welcome to the Would You Rather Game</h2>
+            <div className='login-info'>
+              <p>Please select a user to continue:</p>
+              <Dropdown
+                placeholder='Select User'
+                fluid
+                selection
+                options={userOptions}
+                onChange={this.handleSetUser}
+                required
+                scrolling
+                style={{marginBottom: '30px'}}
+              />
+              <Button color={'green'} fluid disabled={this.state.user === ''}>Log In</Button>
             </div>
           </div>
         </form>
@@ -48,9 +53,23 @@ class Login extends Component {
 }
 
 
+
 function mapStateToProps({ users }) {
+  const userOptions = Object.values(users).map(user => {
+    return {
+      key: user.id,
+      text: user.name,
+      value: user.id,
+      image: {
+        avatar: true,
+        src: user.avatarURL
+      }
+    }
+  })
+
   return {
-    users: Object.values(users)
+    users: Object.values(users),
+    userOptions
   }
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../syles/ResultPage.scss'
+import '../styles/ResultPage.scss'
 import { connect } from 'react-redux';
 import ResultCard from './ResultCard';
 import { Button } from 'semantic-ui-react';
-
+import { Redirect } from 'react-router-dom'
 
 class ResultPage extends Component {
   handleClick = () => {
@@ -11,6 +11,12 @@ class ResultPage extends Component {
   }
 
   render() {
+    const { idValid } = this.props;
+
+    if (idValid === false) {
+      return <Redirect to='/unknownId' />
+    }
+
     const { name, avatar } = this.props
     return (
       <form className="teaser-body">
@@ -37,6 +43,12 @@ class ResultPage extends Component {
 
 function mapStateToProps({users, questions}, props) {
   const {question_id} = props.match.params
+  const isIdValid = Object.keys(questions).includes(question_id)
+  if (!isIdValid) {
+    return {
+      idValid: false
+    }
+  }
   const user = users[questions[question_id].author]
   return {
     id: user.id,

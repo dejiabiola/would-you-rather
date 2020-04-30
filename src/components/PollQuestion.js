@@ -1,13 +1,54 @@
 import React, { Component } from 'react';
-import '../syles/PollQuestion.scss'
+import '../styles/PollQuestion.scss'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
+import { handleSaveQuestionAnswer } from '../actions/shared';
+import { Button } from 'semantic-ui-react';
 class PollQuestion extends Component {
+  state = {
+    selectedOption: '',
+    answered: false
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      selectedOption: e.target.value
+    })
+
+  }
+
+  handleSubmitAnswer = (e) => {
+    e.preventDefault()
+    const answer = this.state.selectedOption
+    const { authedUser, dispatch } = this.props 
+    const { question_id } = this.props.match.params
+    dispatch(handleSaveQuestionAnswer(authedUser, question_id, answer))
+    this.setState({
+      answered: true
+    })
+  }
+
   render() {
-    const { author, avatar, optionOne, optionTwo } = this.props.questionData;
+    const { idValid } = this.props;
+
+    if (idValid === false) {
+      return <Redirect to='/' />
+    }
+
+    const { author, avatar, optionOne, optionTwo, hasAnswered } = this.props.questionData;
+    const { question_id } = this.props.match.params;
+    const { selectedOption, answered } = this.state;
+
+    if (answered) {
+      return <Redirect to={`/results/${question_id}`} />
+    }
+
+    if (hasAnswered) {
+      return <Redirect to='/' />
+    }
+
     return (
-      <form className="teaser-body">
+      <form className="teaser-body" onSubmit={this.handleSubmitAnswer}>
         <div className="teaser-header-div">
           <h2 className="teaser-header">{author} asks:</h2>
         </div>
@@ -17,13 +58,25 @@ class PollQuestion extends Component {
           </div>
           <div className="question-info-div">
             <h3 className="question-info-header">Would You Rather</h3>
-            <input type="radio" name="poll-answer" id="optionOne" value="optionOne" />
+            <input 
+              type="radio" 
+              name="poll-answer" 
+              id="optionOne" 
+              value="optionOne" 
+              onChange={this.handleChange}
+              checked={selectedOption === 'optionOne'}
+              />
             <label htmlFor="optionOne">{optionOne}</label><br /><br />
-            <input type="radio" name="poll-answer" id="optionTwo" value="option2" />
-            <label htmlFor="optionTwo">{optionTwo}</label><br />
-            <Link to='/result'>
-              <button className="teaser-button">Submit</button>
-            </Link>
+            <input 
+              type="radio" 
+              name="poll-answer" 
+              id="optionTwo" 
+              value="optionTwo" 
+              onChange={this.handleChange}
+              checked={selectedOption === 'optionTwo'}
+            />
+            <label htmlFor="optionTwo">{optionTwo}</label><br /><br />
+            <Button color={'green'} fluid disabled={this.state.selectedOption === ''}>Submit</Button>
           </div>
         </div>
       </form>
@@ -33,18 +86,26 @@ class PollQuestion extends Component {
 
 function mapStateToProps({users, questions, authedUser}, props) {
   const { question_id } = props.match.params
+  const isIdValid = Object.keys(questions).includes(question_id)
+  if (!isIdValid) {
+    return {
+      idValid: false
+    }
+  }
   const questionAsker = users[questions[question_id].author]
   const questionData = {
     author: questionAsker.name,
     avatar: questionAsker.avatarURL,
     optionOne: questions[question_id].optionOne.text,
     optionTwo: questions[question_id].optionTwo.text,
-    authedUser
+    hasAnswered: Object.keys(users[authedUser].answers).includes(question_id)
   }
 
 
   return {
-    questionData
+    questionData,
+    authedUser,
+    idValid: true
   }
 }
 

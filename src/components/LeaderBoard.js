@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../syles/LeaderBoard.scss';
+import '../styles/LeaderBoard.scss';
 import { connect } from 'react-redux';
 
 

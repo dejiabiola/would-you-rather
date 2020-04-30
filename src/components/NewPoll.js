@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import '../syles/NewPoll.scss'
+import '../styles/NewPoll.scss'
 import { connect } from 'react-redux'
 import { Divider } from 'semantic-ui-react'
-import { handleAddNewQuestion } from '../actions/questions'
-
+import { handleAddNewQuestion } from '../actions/shared'
+import { Button, Segment, Dimmer, Loader } from 'semantic-ui-react'
 
 class NewPoll extends Component {
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    isLoading: false
   }
 
   handleOptionOne = (e) => {
@@ -34,17 +35,29 @@ class NewPoll extends Component {
     console.log("from here", optionOne, optionTwo, authedUser)
     dispatch(handleAddNewQuestion(optionOne, optionTwo, authedUser))
     this.setState({
-      optionOne: '',
-      optionTwo: ''
+      isLoading: true
     })
-    this.props.history.push('/');
+    setTimeout(() => {
+      this.setState({
+        optionOne: '',
+        optionTwo: '',
+        isLoading: false
+      })
+      this.props.history.push('/');
+    }, 1000)
+    
+    
   } 
 
-
-
-
   render() {
+  
+
     return (
+      <Segment style={{border: 'none', boxShadow: 'none'}}>
+        <Dimmer active={this.state.isLoading === true}>
+          <Loader size='big' disabled={this.state.isLoading === false}>Loading</Loader>
+        </Dimmer>
+
       <form className="new-poll-body" onSubmit={this.handleNewPollsubmit}>
         <div className="new-poll-header-div">
           <h2 className="new-poll-header">Create New Question</h2>
@@ -67,12 +80,22 @@ class NewPoll extends Component {
             placeholder="Enter option two.."
             onChange={this.handleOptionTwo}
             />
-          <button className="new-poll-submit">Submit</button>
+          <Button 
+            color={'green'} 
+            size={'large'} 
+            disabled={this.state.optionOne === '' || this.state.optionTwo === ''}
+            fluid
+            >
+            Submit
+          </Button>
         </div>
-      </form>
+      </form>  
+      </Segment>
     )
   }
 }
+
+
 
 function mapStateToProps({ authedUser }) {
   return {

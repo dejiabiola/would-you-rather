@@ -5,9 +5,9 @@
 
 .teasers {
   padding: 10px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-left: 1px solid #DBDBDB;
+  border-right: 1px solid #DBDBDB;
+  border-bottom: 1px solid #DBDBDB;
 }
 
 .dashboard-button-div button {
@@ -17,16 +17,16 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #DBDBDB;
   outline: none;
 }
 
 .dashboard-button:nth-of-type(1) {
-  border-right: 1px solid black;
+  border-right: 1px solid #DBDBDB;
 }
 
 .dashboard-button:nth-of-type(2) {
-  border-left: 1px solid black
+  border-left: 1px solid #DBDBDB
 }
 
 #active-button {

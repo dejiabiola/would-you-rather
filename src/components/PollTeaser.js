@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import '../syles/PollTeaser.scss'
+import '../styles/PollTeaser.scss'
 import { Link } from 'react-router-dom';
-
+import { Button } from 'semantic-ui-react';
 
 
 class PollTeaser extends Component {
@@ -15,7 +15,7 @@ class PollTeaser extends Component {
         {questionsToDisplay !== undefined && questionsToDisplay.map(question => (
           <div className="teaser-body" key={question.id}>
             <div className="teaser-header-div">
-              <h2 className="teaser-header">{users[question.author].name} asks:</h2>
+              <h3 className="teaser-header">{users[question.author].name} asks:</h3>
             </div>
             <div className="teaser-inner-div">
               <div className="teaser-image-div">
@@ -25,8 +25,13 @@ class PollTeaser extends Component {
                 <h3 className="teaser-info-header">Would you rather</h3>
                 <p className="teaser-info">{question.optionOne.text}...</p>
                 {question.hasLiked ?
-                  <Link to={`/results/${question.id}`}><button className="teaser-button" style={{backgroundColor:'blue'}}>Results</button></Link> :
-                <Link to={`/questions/${question.id}`}><button className="teaser-button">View Poll</button></Link>}
+                  <Link to={`/results/${question.id}`}>
+                    <Button color={'teal'} fluid>View Result</Button>
+                  </Link> :
+                  <Link to={`/questions/${question.id}`}>
+                    <Button color={'green'} fluid>View Poll</Button>
+                  </Link>
+                }
               </div>
             </div>
           </div>

@@ -1,30 +1,41 @@
-import { saveQuestion } from "../utils/api"
-import { addQuestionToUser } from "./users"
+import { getQuestions } from "../utils/api"
+import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
+export const ADD_VOTE_TO_QUESTION = 'ADD_VOTE_TO_QUESTION'
 
-export function receiveQuestions(questions) {
+
+function receiveQuestions(questions) {
   return {
     type: RECEIVE_QUESTIONS,
     questions
   }
 }
 
-function addNewQuestion(question) {
+export function getAllQuestions() {
+  showLoading()
+  return (dispatch) => {
+    return getQuestions()
+    .then(questions => {
+      dispatch(receiveQuestions(questions))
+      hideLoading()
+    })
+  }
+}
+
+export function addNewQuestion(question) {
   return {
     type: ADD_NEW_QUESTION,
     question
   }
 }
 
-export function handleAddNewQuestion(optionOneText, optionTwoText, author) {
-  console.log("details are", optionOneText, optionTwoText, author)
-  return (dispatch) => {
-    return saveQuestion({ optionOneText, optionTwoText, author })
-    .then(question => {
-      dispatch(addNewQuestion(question))
-      dispatch(addQuestionToUser(question))
-    })
+export function addVoteToQuestion(authedUser, qid, answer) {
+  return {
+    type: ADD_VOTE_TO_QUESTION,
+    authedUser,
+    qid,
+    answer
   }
 }

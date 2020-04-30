@@ -1,6 +1,7 @@
 .teaser-body {
-  border: 1px solid blue;
+  border: 1px solid #DBDBDB;
   margin-bottom: 20px;
+  box-shadow: 2px 3px 9px 1px #DBDBDB;
 }
 
 .teaser-body:last-of-type {
@@ -8,12 +9,15 @@
 }
 
 .teaser-header-div {
-  background-color: rgb(155, 151, 151);
+  background-color:  #838383;
+  color: white;
   padding: 10px;
 }
 
-.teaser-header {
-  
+.teaser-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .teaser-inner-div {
@@ -31,7 +35,7 @@
   border-left: 1px solid grey;
   margin-left: 20px;
   padding-left: 20px;
-  width: 200px;
+  width: 270px;
 }
 
 .teaser-info-header {
@@ -39,7 +43,8 @@
 }
 
 .teaser-info {
-  margin-top: 27px;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .teaser-button {
@@ -53,6 +58,3 @@
   color: white;
 }
 
-.teaser-button:hover {
-
-}

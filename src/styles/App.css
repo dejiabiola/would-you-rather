@@ -20,3 +20,20 @@ select {
   align-items: center;
 }
 
+.login-form-div {
+  width: 500px;
+  margin: 100px auto;
+  border: 1px solid #DBDBDB;
+}
+
+.login-form-div h2 {
+  background-color: #838383;
+  color: white;
+  padding: 10px;
+}
+
+.login-info {
+  margin: 10px;
+}
+
+

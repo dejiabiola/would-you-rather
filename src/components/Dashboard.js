@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PollTeaser from './PollTeaser'
-import '../syles/Dashboard.scss'
-
+import '../styles/Dashboard.scss'
 
 class DashBoard extends Component {
   state = {

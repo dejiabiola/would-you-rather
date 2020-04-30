@@ -56,13 +56,13 @@ function mapStateToProps({ questions, authedUser }, props) {
       {
         userVoted: question.optionOne.votes.includes(authedUser) ? true : false,
         noOfVotes: question.optionOne.votes.length,
-        percentVote: (question.optionOne.votes.length / total) * 100,
+        percentVote: (+(question.optionOne.votes.length / total) * 100).toFixed(1),
         text: question.optionOne.text
       },
       {
         userVoted: question.optionTwo.votes.includes(authedUser) ? true : false,
         noOfVotes: question.optionTwo.votes.length,
-        percentVote: (question.optionTwo.votes.length / total) * 100,
+        percentVote: (+(question.optionTwo.votes.length / total) * 100).toFixed(1),
         text: question.optionTwo.text
       }
     ],

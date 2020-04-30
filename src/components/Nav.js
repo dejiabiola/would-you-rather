@@ -1,48 +1,43 @@
 import React, { Component, Fragment } from 'react'
 import { Menu, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { logOutUser } from '../actions/authedUser'
 
+
 class Navbar extends Component {
-  state = { activeItem: '' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
+  
   handleSignOut = (e) => {
     this.props.dispatch(logOutUser())
   }
 
   render() {
     const { user } = this.props
-    const { activeItem } = this.state
-    
+    const { pathname } = this.props.location
     return (
       <Fragment>
-        <Menu tabular size={"massive"}>
+        <Menu tabular size={"massive"} stackable>
           <Menu.Item
             as={Link}
             to="/"
             name='home'
-            onClick={this.handleItemClick}
-            active={activeItem === 'home'}
+            active={pathname === '/'}
           />
           <Menu.Item
             as={Link}
             to="/add"
             name='new poll'
-            onClick={this.handleItemClick}
-            active={activeItem === 'new poll'}
+            active={pathname === '/add'}
           />
           <Menu.Item
             as={Link}
             to='/leaderboard'
             name='leaderboard' 
-            onClick={this.handleItemClick}
-            active={activeItem === 'leaderboard'}
+            active={pathname === '/leaderboard'}
           />
           <Menu.Menu position='right'>
             <span className="span">
+              <span style={{marginRight: '2px'}}>Welcome {user.name}</span>
               <Image
                 src={user.avatarURL}
                 avatar
@@ -51,7 +46,6 @@ class Navbar extends Component {
                 verticalAlign={"bottom"}
                 className={"nav-avatar"}
               />
-              {user.name}
             </span>
             <Menu.Item
               name='logout'
@@ -73,4 +67,4 @@ function mapStateToProps({ users, authedUser }) {
 }
 
 
-export default connect(mapStateToProps)(Navbar)
+export default withRouter(connect(mapStateToProps)(Navbar))

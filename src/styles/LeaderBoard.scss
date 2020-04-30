@@ -1,19 +1,25 @@
 .leaderboard-outer-body {
-  border: 1px solid blue;
-  padding: 10px;
+  border: 1px solid #DBDBDB;
+  padding-bottom: 10px;
 }
 
 .leaderboard-outer-body h1 {
   text-align: center;
+  background-color: #838383;
+  color: white;
+  padding: 10px;
 }
 
 .leaderboard-card {
-  border: 1px solid black;
+  border: 1px solid #DBDBDB;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  box-shadow: 2px 3px 9px 1px #DBDBDB;
 }
 
 .leaderboard-card:last-of-type {
@@ -21,7 +27,7 @@
 }
 
 .leaderboard-image-div {
-  border-right: 1px solid black;
+  border-right: 1px solid grey;
   padding-right: 20px;
 }
 
@@ -32,7 +38,7 @@
 
 .leaderboard-info {
   width: 200px;
-  border-right: 1px solid black
+  border-right: 1px solid grey
 }
 
 .lb-answered-questions-div {

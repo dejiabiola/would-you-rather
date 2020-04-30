@@ -1,12 +1,14 @@
 .new-poll-body {
-  border: 1px solid blue;
+  border: 1px solid #DBDBDB;
 }
 
 .new-poll-header-div {
   padding: 10px;
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #DBDBDB;
   margin-bottom: 15px;
+  background-color: #838383;
+  color: white;
 }
 
 .new-poll-info {
@@ -26,7 +28,12 @@
 .new-poll-input {
   width: 100%;
   padding: 12px;
-  border: 1px solid grey;
+  border: 1px solid #DBDBDB;
+  margin-bottom: 15px;
+}
+
+.new-poll-input:nth-of-type(2) {
+  margin-top: 15px;
   margin-bottom: 30px;
 }
 
