@@ -32,7 +32,6 @@ class NewPoll extends Component {
     e.preventDefault();
     const { dispatch, authedUser } = this.props;
     const { optionOne, optionTwo } = this.state;
-    console.log("from here", optionOne, optionTwo, authedUser)
     dispatch(handleAddNewQuestion(optionOne, optionTwo, authedUser))
     this.setState({
       isLoading: true
