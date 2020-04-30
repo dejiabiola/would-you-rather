@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import '../styles/ResultPage.scss'
-import { connect } from 'react-redux';
-import ResultCard from './ResultCard';
-import { Button } from 'semantic-ui-react';
+import { connect } from 'react-redux'
+import ResultCard from './ResultCard'
+import { Button } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 class ResultPage extends Component {
   handleClick = () => {
-    this.props.history.push('/');
+    this.props.history.push('/')
   }
 
   render() {
-    const { idValid } = this.props;
+    const { idValid } = this.props
 
     if (idValid === false) {
       return <Redirect to='/unknownId' />

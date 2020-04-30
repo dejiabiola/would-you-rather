@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import '../styles/App.css';
-import { connect } from 'react-redux';
-import Login from './Login';
+import React, { Component, Fragment } from 'react'
+import '../styles/App.css'
+import { connect } from 'react-redux'
+import Login from './Login'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Dashboard from './Dashboard';
+import Dashboard from './Dashboard'
 import NavBar from './Nav'
-import NewPoll from './NewPoll';
-import LeaderBoard from './LeaderBoard';
-import PollQuestion from './PollQuestion';
-import ResultPage from './ResultPage';
-import NoMatch from './NoMatch';
-import { getAllQuestions } from '../actions/questions';
+import NewPoll from './NewPoll'
+import LeaderBoard from './LeaderBoard'
+import PollQuestion from './PollQuestion'
+import ResultPage from './ResultPage'
+import NoMatch from './NoMatch'
+import { getAllQuestions } from '../actions/questions'
 
 
 
@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   render() {
-    const { authedUser } = this.props;
+    const { authedUser } = this.props
 
     return (
       <Router>

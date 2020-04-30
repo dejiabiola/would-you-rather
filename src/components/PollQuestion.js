@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import '../styles/PollQuestion.scss'
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { handleSaveQuestionAnswer } from '../actions/shared';
-import { Button } from 'semantic-ui-react';
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { handleSaveQuestionAnswer } from '../actions/shared'
+import { Button } from 'semantic-ui-react'
 class PollQuestion extends Component {
   state = {
     selectedOption: '',

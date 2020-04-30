@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setAuthedUser } from '../actions/authedUser';
-import { getAllUsers } from '../actions/users';
-import { Dropdown, Button } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
+import { getAllUsers } from '../actions/users'
+import { Dropdown, Button } from 'semantic-ui-react'
 
 class Login extends Component {
   componentDidMount() {

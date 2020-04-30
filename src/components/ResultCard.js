@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Progress } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom';
-import { Rating } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom'
+import { Rating } from 'semantic-ui-react'
 
 class ResultCard extends Component { 
   render() {

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import '../styles/LeaderBoard.scss';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import '../styles/LeaderBoard.scss'
+import { connect } from 'react-redux'
 
 
 
 class LeaderBoard extends Component {
   render() {
-    const { leaderboardInfo } = this.props;
+    const { leaderboardInfo } = this.props
     return (
       <div className="leaderboard-outer-body">
         <h1>LeaderBoard</h1>
