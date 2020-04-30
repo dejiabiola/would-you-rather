@@ -1,5 +1,4 @@
 import { getQuestions } from "../utils/api"
-import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
@@ -14,12 +13,10 @@ function receiveQuestions(questions) {
 }
 
 export function getAllQuestions() {
-  showLoading()
   return (dispatch) => {
     return getQuestions()
     .then(questions => {
       dispatch(receiveQuestions(questions))
-      hideLoading()
     })
   }
 }

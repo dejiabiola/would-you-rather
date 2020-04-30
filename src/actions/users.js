@@ -1,5 +1,4 @@
 import { getUsers } from "../utils/api"
-import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_USERS = "RECEIVE_USERS"
 export const ADD_QUESTION_TO_USER = "ADD_QUESTION_TO_USER"
@@ -13,11 +12,9 @@ function receiveUsers(users) {
 }
 
 export function getAllUsers() {
-  showLoading()
   return (dispatch) => {
     return getUsers().then(users => {
       dispatch(receiveUsers(users))
-      hideLoading()
     })
   }
 }
